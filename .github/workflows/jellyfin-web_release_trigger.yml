@@ -43,7 +43,7 @@ jobs:
               "name": "@glenlowland/jellyfin-tizen",
               "packageType": "app",
               "appName": "Jellyfin",
-              "appPath": "www/index.html",
+              "appPath": "index.html",
               "version": "${{ steps.version.outputs.version }}"
             }
             
