@@ -40,8 +40,7 @@ jobs:
               "name": "@glenlowland/jellyfin-tizen",
               "packageType": "app",
               "appName": "Jellyfin",
-              "appPath": "",
-              "version": "${{ steps.date.outputs.date }}"
+              "appPath": ""
             }
 
       - name: Build jellyfin-tizen
@@ -60,7 +59,7 @@ jobs:
       - name: Release Build Result
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.date.outputs.date }}
+          tag_name: ${{ steps.info.outputs.version }}
           body: "A new version of @glenlowland/jellyfin-tizen has been published because of a new release of @glenlowland/jellyfin-web."
       
 
