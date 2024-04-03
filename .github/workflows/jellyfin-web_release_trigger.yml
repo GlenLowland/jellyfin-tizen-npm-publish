@@ -1,0 +1,67 @@
+name: Release trigger
+
+on:
+  repository_dispatch:
+    types: [new-jellyfin-web-release]
+  workflow_dispatch:
+
+jobs:
+  jellyfin-web_release_trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - run: env
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - name: Clone jellyfin-tizen
+        uses: sudosubin/git-clone-action@v1.0.1
+        with:
+          repository: 'jellyfin/jellyfin-tizen'
+          platform: 'github'
+          path: './jellyfin-tizen'
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.0.0
+        with:
+          node-version: '>=14'
+
+      - name: Modify jellyfin-tizen/package.json
+        id: info
+        uses: jaywcjlove/github-action-package@main
+        with:
+          path: './jellyfin-tizen/package.json'
+          data: |
+            {
+              "name": "@glenlowland/jellyfin-tizen",
+              "packageType": "app",
+              "appName": "Jellyfin",
+              "appPath": "",
+              "version": "${{ steps.date.outputs.date }}"
+            }
+
+      - name: Build jellyfin-tizen
+        run: |
+          cd jellyfin-tizen
+          npm install @glenlowland/jellyfin-web
+          JELLYFIN_WEB_DIR=./node_modules/@glenlowland/jellyfin-web/dist npm ci --no-audit
+
+      - name: Publish new @glenlowland/jellyfin-tizen package version
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./jellyfin-tizen
+          access: public
+
+      - name: Release Build Result
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.date.outputs.date }}
+          body: "A new version of @glenlowland/jellyfin-tizen has been published because of a new release of @glenlowland/jellyfin-web."
+      
+
+      
