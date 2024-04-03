@@ -67,6 +67,16 @@ jobs:
           include: "jellyfin-tizen/gulpfile.js"
           separator: "___"
 
+      - name: Burst Cache for index.html
+        uses: htsnvhoang/find-replace-multiple@master
+        with:
+          finds: |
+            url=www/index.html"
+          replaces: |
+            url=www/index.html?v=${{ steps.info.outputs.version }}"
+          include: "jellyfin-tizen/index.html"
+          separator: "___"
+
       - name: Build jellyfin-tizen
         run: |
           cd jellyfin-tizen
