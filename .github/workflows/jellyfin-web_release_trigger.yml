@@ -46,6 +46,15 @@ jobs:
               "appPath": "www/index.html",
               "version": "${{ steps.version.outputs.version }}"
             }
+            
+      - name: Enable TrueHD Audio
+        uses: htsnvhoang/find-replace-multiple@master
+        with:
+          finds: |
+            return profileBuilder({ enableMkvProgressive: false, enableSsaRender: true });
+          replaces: |
+            return profileBuilder({ enableMkvProgressive: false, enableSsaRender: true, supportsTrueHd: true });
+          include: "jellyfin-tizen/tizen.js"
 
       - name: Build jellyfin-tizen
         run: |
