@@ -55,6 +55,7 @@ jobs:
           replaces: |
             return profileBuilder({ enableMkvProgressive: false, enableSsaRender: true, supportsTrueHd: true });
           include: "jellyfin-tizen/tizen.js"
+          separator: "___"
 
       - name: Build jellyfin-tizen
         run: |
