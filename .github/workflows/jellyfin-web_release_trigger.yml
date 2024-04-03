@@ -57,6 +57,16 @@ jobs:
           include: "jellyfin-tizen/tizen.js"
           separator: "___"
 
+      - name: Burst Cache for tizen.js
+        uses: htsnvhoang/find-replace-multiple@master
+        with:
+          finds: |
+            tizen.setAttribute('src', '../tizen.js');
+          replaces: |
+            tizen.setAttribute('src', '../tizen.js' + require('./package.json').version);
+          include: "jellyfin-tizen/gulpfile.js"
+          separator: "___"
+
       - name: Build jellyfin-tizen
         run: |
           cd jellyfin-tizen
