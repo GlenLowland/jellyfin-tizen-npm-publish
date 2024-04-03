@@ -63,7 +63,7 @@ jobs:
           finds: |
             tizen.setAttribute('src', '../tizen.js');
           replaces: |
-            tizen.setAttribute('src', '../tizen.js' + require('./package.json').version);
+            tizen.setAttribute('src', '../tizen.js?v=' + require('./package.json').version);
           include: "jellyfin-tizen/gulpfile.js"
           separator: "___"
 
