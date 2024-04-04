@@ -57,14 +57,15 @@ jobs:
           include: "jellyfin-tizen/tizen.js"
           separator: "___"
 
-      - name: Fix Tizen API loading
+      - name: Remove defers from scripts
         uses: htsnvhoang/find-replace-multiple@master
         with:
           finds: |
-            webapis.setAttribute('src', '$WEBAPIS/webapis/webapis.js');
+            apploader.setAttribute('defer', '');___
+            tizen.setAttribute('defer', '');
           replaces: |
-            webapis.setAttribute('src', '$WEBAPIS/webapis/webapis.js');
-            webapis.setAttribute('defer', '');
+            ___
+            
           include: "jellyfin-tizen/gulpfile.js"
           separator: "___"
 
