@@ -53,8 +53,8 @@ jobs:
           finds: |
             version: 'DEVELOPMENT'
           replaces: |
-            version: ${{ steps.info.outputs.version }}
-          include: "jellyfin-tizen/tizen.js"
+            version: '${{ steps.info.outputs.version }}'
+          include: "tizen-adapter.js"
           separator: "___"
             
       - name: Enable TrueHD Audio
