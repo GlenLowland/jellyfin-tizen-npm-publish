@@ -61,9 +61,9 @@ jobs:
         uses: htsnvhoang/find-replace-multiple@master
         with:
           finds: |
-            console.log
+            console.log('Tizen adapter');
           replaces: |
-            alert
+            alert('Tizen adapter ' + tizen.application.getCurrentApplication().appInfo.version);
           include: "jellyfin-tizen/tizen.js"
           separator: "___"
 
