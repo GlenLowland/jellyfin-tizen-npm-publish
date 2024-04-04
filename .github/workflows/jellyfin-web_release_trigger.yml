@@ -57,8 +57,19 @@ jobs:
           include: "jellyfin-tizen/tizen.js"
           separator: "___"
 
+      - name: Include tizen.js in the app
+        uses: htsnvhoang/find-replace-multiple@master
+        with:
+          finds: |
+            webapis.setAttribute('src', '$WEBAPIS/webapis/webapis.js');
+          replaces: |
+            webapis.setAttribute('src', '../tizen-adapter.js');
+          include: "jellyfin-tizen/gulpfile.js"
+          separator: "___"
+
       - name: Build jellyfin-tizen
         run: |
+          cp tizen-adapter.js jellyfin-tizen/
           cd jellyfin-tizen
           rm .gitignore
           npm install @glenlowland/jellyfin-web
