@@ -11,6 +11,7 @@
         }
     };
 
+    alert('Width: ' + window.screen.width + ', height: ' + window.screen.height + ', density: ' + window.devicePixelRatio);
     window.tizen = {
         application: {
             getCurrentApplication: () => currentApplication
