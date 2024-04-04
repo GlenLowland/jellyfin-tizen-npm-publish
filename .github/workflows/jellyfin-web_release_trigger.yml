@@ -57,14 +57,15 @@ jobs:
           include: "jellyfin-tizen/tizen.js"
           separator: "___"
 
-      - name: Debug tizen.js
+      - name: Fix Tizen API loading
         uses: htsnvhoang/find-replace-multiple@master
         with:
           finds: |
-            console.log('Tizen adapter');
+            webapis.setAttribute('src', '$WEBAPIS/webapis/webapis.js');
           replaces: |
-            alert('Tizen adapter ' + tizen.application.getCurrentApplication().appInfo.version);
-          include: "jellyfin-tizen/tizen.js"
+            webapis.setAttribute('src', '$WEBAPIS/webapis/webapis.js');
+            webapis.setAttribute('defer', '');
+          include: "jellyfin-tizen/gulpfile.js"
           separator: "___"
 
       - name: Build jellyfin-tizen
