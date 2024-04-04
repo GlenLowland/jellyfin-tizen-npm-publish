@@ -63,7 +63,7 @@ jobs:
           finds: |
             .setAttribute('defer', '');
           replaces: |
-            .setAttribute('', '');
+            .setAttribute('type', 'text/javascript');
           include: "jellyfin-tizen/gulpfile.js"
           separator: "___"
 
