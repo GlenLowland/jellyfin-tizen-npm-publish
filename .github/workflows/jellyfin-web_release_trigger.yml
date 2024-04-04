@@ -57,24 +57,14 @@ jobs:
           include: "jellyfin-tizen/tizen.js"
           separator: "___"
 
-      - name: Burst Cache for tizen.js
+      - name: Debug tizen.js
         uses: htsnvhoang/find-replace-multiple@master
         with:
           finds: |
-            tizen.setAttribute('src', '../tizen.js');
+            console.log
           replaces: |
-            tizen.setAttribute('src', '../tizen.js?v=' + require('./package.json').version);
-          include: "jellyfin-tizen/gulpfile.js"
-          separator: "___"
-
-      - name: Burst Cache for index.html
-        uses: htsnvhoang/find-replace-multiple@master
-        with:
-          finds: |
-            url=www/index.html"
-          replaces: |
-            url=www/index.html?v=${{ steps.info.outputs.version }}"
-          include: "jellyfin-tizen/index.html"
+            alert
+          include: "jellyfin-tizen/tizen.js"
           separator: "___"
 
       - name: Build jellyfin-tizen
