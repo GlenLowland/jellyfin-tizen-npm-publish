@@ -57,29 +57,6 @@ jobs:
           include: "jellyfin-tizen/tizen.js"
           separator: "___"
 
-      - name: Remove defers from scripts
-        uses: htsnvhoang/find-replace-multiple@master
-        with:
-          finds: |
-            apploader.setAttribute('defer', '');___
-            webapis.setAttribute('src', '$WEBAPIS/webapis/webapis.js');___
-            tizen.setAttribute('defer', '');___
-          replaces: |
-            apploader.setAttribute('type', 'text/javascript');___
-            webapis.setAttribute('src', '$WEBAPIS/webapis/webapis.js');
-            webapis.setAttribute('type', 'text/javascript');___
-            tizen.setAttribute('type', 'text/javascript');___
-          include: "jellyfin-tizen/gulpfile.js"
-          separator: "___"
-
-      - name: Alert debug
-        uses: htsnvhoang/find-replace-multiple@master
-        with:
-          finds: "console.log('Tizen adapter');"
-          replaces: "alert('Tizen adapter: ' + tizen.application.getCurrentApplication().appInfo.version);"
-          include: "jellyfin-tizen/tizen.js"
-          separator: "___"
-
       - name: Build jellyfin-tizen
         run: |
           cd jellyfin-tizen
