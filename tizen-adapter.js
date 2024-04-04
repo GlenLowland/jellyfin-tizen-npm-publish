@@ -11,7 +11,6 @@
         }
     };
 
-    alert('Width: ' + window.screen.width + ', height: ' + window.screen.height + ', density: ' + window.devicePixelRatio);
     window.tizen = {
         application: {
             getCurrentApplication: () => currentApplication
@@ -38,8 +37,8 @@
 
     window.webapis = {
         productinfo: {
-            is8KPanelSupported: () => window.devicePixelRatio === 4,
-            isUdPanelSupported: () => window.devicePixelRatio === 2
+            is8KPanelSupported: () => false,
+            isUdPanelSupported: () => true // unfortunately tv browser is lying to us about pixel ratio: window.devicePixelRatio === 2
         }
     };
 })();
