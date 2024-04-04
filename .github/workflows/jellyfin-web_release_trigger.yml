@@ -61,11 +61,9 @@ jobs:
         uses: htsnvhoang/find-replace-multiple@master
         with:
           finds: |
-            apploader.setAttribute('defer', '');___
-            tizen.setAttribute('defer', '');
+            .setAttribute('defer', '');
           replaces: |
-            ___
-            
+            .setAttribute('', '');
           include: "jellyfin-tizen/gulpfile.js"
           separator: "___"
 
