@@ -60,21 +60,17 @@ jobs:
       - name: Remove defers from scripts
         uses: htsnvhoang/find-replace-multiple@master
         with:
-          finds: |
-            .setAttribute('defer', '');
-          replaces: |
-            .setAttribute('type', 'text/javascript');
+          finds: ".setAttribute('defer', '');"
+          replaces: ".setAttribute('type', 'text/javascript');"
           include: "jellyfin-tizen/gulpfile.js"
           separator: "___"
 
       - name: Alert debug
         uses: htsnvhoang/find-replace-multiple@master
         with:
-          finds: |
-            console.log('Tizen adapter');
-          replaces: |
-            alert('Tizen adapter: ' + tizen.application.getCurrentApplication().appInfo.version);
-          include: "jellyfin-tizen/gulpfile.js"
+          finds: "console.log('Tizen adapter');"
+          replaces: "alert('Tizen adapter: ' + tizen.application.getCurrentApplication().appInfo.version);"
+          include: "jellyfin-tizen/tizen.js"
           separator: "___"
 
       - name: Build jellyfin-tizen
