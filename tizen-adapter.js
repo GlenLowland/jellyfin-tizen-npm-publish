@@ -82,11 +82,13 @@
         const message = JSON.parse(msg.data);
         switch (message.type) {
             case 'systemInfo': {
+                alert('Received system info: ' + JSON.stringify(message.result));
                 systemInfo[message.propertyValue] = message.result;
                 break;
             }
 
             case 'productInfo': {
+                alert('Received product info: ' + JSON.stringify(message.result));
                 productInfo = message.result;
                 break;
             }
