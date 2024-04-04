@@ -19,8 +19,8 @@
             getPropertyValue: (propertyValue, cb) => {
                 if (propertyValue === 'DISPLAY') {
                     return {
-                        resolutionWidth: 3840,
-                        resolutionHeight: 2160
+                        resolutionWidth: window.screen.width,
+                        resolutionHeight: window.screen.height
                     };
                 } else {
                     return {};
@@ -37,8 +37,8 @@
 
     window.webapis = {
         productinfo: {
-            is8KPanelSupported: () => false,
-            isUdPanelSupported: () => true
+            is8KPanelSupported: () => window.devicePixelRatio === 4,
+            isUdPanelSupported: () => window.devicePixelRatio === 2
         }
     };
 })();
