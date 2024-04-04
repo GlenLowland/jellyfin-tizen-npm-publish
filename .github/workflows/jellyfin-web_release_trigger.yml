@@ -46,6 +46,16 @@ jobs:
               "appPath": "index.html",
               "version": "${{ steps.version.outputs.version }}"
             }
+
+      - name: Set tize-adapter.js app version
+        uses: htsnvhoang/find-replace-multiple@master
+        with:
+          finds: |
+            version: 'DEVELOPMENT'
+          replaces: |
+            version: ${{ steps.info.outputs.version }}
+          include: "jellyfin-tizen/tizen.js"
+          separator: "___"
             
       - name: Enable TrueHD Audio
         uses: htsnvhoang/find-replace-multiple@master
@@ -57,7 +67,7 @@ jobs:
           include: "jellyfin-tizen/tizen.js"
           separator: "___"
 
-      - name: Include tizen.js in the app
+      - name: Include tizen-adapter.js in the app
         uses: htsnvhoang/find-replace-multiple@master
         with:
           finds: |
