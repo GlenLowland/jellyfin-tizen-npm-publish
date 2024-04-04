@@ -62,12 +62,14 @@
             }
             client.onmessage = onMessage;
             client.onopen = onOpen;
-            client.onerror = () => {
+            client.onerror = (error) => {
                 localStorage.removeItem('ip');
+                alert('Error connecting to WS: ' + error.message);
                 window.location.reload();
             }
         } catch(e) {
             localStorage.removeItem('ip');
+            alert('Error when creating WS connection: ' + e.message);
             window.location.reload();
         }
     }
