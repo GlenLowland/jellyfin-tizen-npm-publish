@@ -67,6 +67,16 @@ jobs:
           include: "jellyfin-tizen/gulpfile.js"
           separator: "___"
 
+      - name: Alert debug
+        uses: htsnvhoang/find-replace-multiple@master
+        with:
+          finds: |
+            console.log('Tizen adapter');
+          replaces: |
+            alert('Tizen adapter: ' + tizen.application.getCurrentApplication().appInfo.version);
+          include: "jellyfin-tizen/gulpfile.js"
+          separator: "___"
+
       - name: Build jellyfin-tizen
         run: |
           cd jellyfin-tizen
