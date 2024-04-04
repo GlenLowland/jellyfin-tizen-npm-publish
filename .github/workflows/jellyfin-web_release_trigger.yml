@@ -60,8 +60,15 @@ jobs:
       - name: Remove defers from scripts
         uses: htsnvhoang/find-replace-multiple@master
         with:
-          finds: ".setAttribute('defer', '');"
-          replaces: ".setAttribute('type', 'text/javascript');"
+          finds: |
+            apploader.setAttribute('defer', '');___
+            webapis.setAttribute('src', '$WEBAPIS/webapis/webapis.js');___
+            tizen.setAttribute('defer', '');___
+          replaces: |
+            apploader.setAttribute('type', 'text/javascript');___
+            webapis.setAttribute('src', '$WEBAPIS/webapis/webapis.js');
+            webapis.setAttribute('type', 'text/javascript');___
+            tizen.setAttribute('type', 'text/javascript');___
           include: "jellyfin-tizen/gulpfile.js"
           separator: "___"
 
