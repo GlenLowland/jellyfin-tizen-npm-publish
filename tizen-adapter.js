@@ -9,6 +9,9 @@
         appInfo: {
             // Just emulate the value cause I don't see any sense to provide TizenBrew version here
             version: 'DEVELOPMENT'
+        },
+        exit: () => {
+            send({ type: 'exit' });
         }
     };
 
@@ -34,7 +37,7 @@
                         alert('It took too long to recieve Tizen system info!');
                         return cb({});
                     }
-                }, 100);
+                }, 1000);
             }
         },
         tvinputdevice: {
