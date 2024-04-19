@@ -44,7 +44,11 @@ jobs:
               "packageType": "app",
               "appName": "Jellyfin",
               "appPath": "index.html",
-              "version": "${{ steps.version.outputs.version }}"
+              "version": "${{ steps.version.outputs.version }}",
+              "keys": [
+                "MediaPlayPause", "MediaPlay", "MediaPause", "MediaStop",
+                "MediaTrackPrevious", "MediaTrackNext", "MediaRewind", "MediaFastForward"
+              ]
             }
 
       - name: Set tize-adapter.js app version
