@@ -78,7 +78,7 @@ jobs:
             webapis.setAttribute('src', '$WEBAPIS/webapis/webapis.js');
           replaces: |
             webapis.setAttribute('src', '../tizen-adapter.js');
-          include: "jellyfin-tizen/gulpfile.js"
+          include: "jellyfin-tizen/gulpfile.babel.js"
           separator: "___"
 
       - name: Build jellyfin-tizen
