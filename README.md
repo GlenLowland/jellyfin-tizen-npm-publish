@@ -3,7 +3,7 @@ Automated process of jellyfin-tizen packaging &amp; publishing to npm registry w
 
 The [adapter](https://github.com/GlenLowland/jellyfin-tizen-npm-publish/blob/main/tizen-adapter.js) is required for `TizenBrew` because when application is loaded through it, it loses access to all Tizen APIs :/
 
-NPM package ready to be used is: [@glenlowland/jellyfin-tizen](https://www.npmjs.com/package/@glenlowland/jellyfin-tizen).
+NPM package ready to be used is: [@glenlowland/jellyfin-tizen](https://www.npmjs.com/package/@glenlowland/jellyfin-tizen)
 
 Add it as a module to your `TizenBrew` and enjoy!
 
