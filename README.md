@@ -14,7 +14,7 @@ Package versions are just autoincremented for now as `jellyfin-tizen` repo doesn
 ## Known issues
 This app is built specifically to be used in [TizenBrew](https://github.com/reisxd/TizenBrew) as a brew application.
 
-The drawback of this is that it requires your jellyfin server to be accessible through HTTPS and to have a valid SSL certificate.
+The drawback of this is that it requires your jellyfin server to be accessible through HTTPS and to have a valid SSL certificate (see [related issue](https://github.com/GlenLowland/jellyfin-tizen-npm-publish/issues/1) for the full context).
 
 This can be achieved using a reverse proxy with LetsEncrypt certificate support, such as `nginx-proxy-manager`.
 
