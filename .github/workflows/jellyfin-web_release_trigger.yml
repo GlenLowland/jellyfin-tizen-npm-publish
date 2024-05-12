@@ -91,7 +91,7 @@ jobs:
 
             // inject skip-intro-button.js
             const skipIntro = this.createElement('script');
-            skipIntro.setAttribute('src', 'configurationpage?name=skip-intro-button.js');
+            skipIntro.setAttribute('src', 'https://raw.githubusercontent.com/jumoog/intro-skipper/master/ConfusedPolarBear.Plugin.IntroSkipper/Configuration/inject.js');
             skipIntro.setAttribute('defer', '');
             injectTarget.insertBefore(skipIntro, apploader);
           include: "jellyfin-tizen/gulpfile.babel.js"
