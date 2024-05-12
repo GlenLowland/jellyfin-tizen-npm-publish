@@ -81,6 +81,22 @@ jobs:
           include: "jellyfin-tizen/gulpfile.babel.js"
           separator: "___"
 
+      - name: Inject skip-intro-button.js in the app
+        uses: htsnvhoang/find-replace-multiple@master
+        with:
+          finds: |
+            injectTarget.insertBefore(tizen, apploader);
+          replaces: |
+            injectTarget.insertBefore(tizen, apploader);
+
+            // inject skip-intro-button.js
+            const skipIntro = this.createElement('script');
+            skipIntro.setAttribute('src', 'configurationpage?name=skip-intro-button.js');
+            skipIntro.setAttribute('defer', '');
+            injectTarget.insertBefore(skipIntro, apploader);
+          include: "jellyfin-tizen/gulpfile.babel.js"
+          separator: "___"
+
       - name: Build jellyfin-tizen
         run: |
           cp tizen-adapter.js jellyfin-tizen/
