@@ -26,7 +26,7 @@ jobs:
         with:
           repository: 'jellyfin/jellyfin-tizen'
           platform: 'github'
-          path: './jellyfin-tizen'
+          path: 'jellyfin-tizen'
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.0.0
@@ -37,7 +37,7 @@ jobs:
         id: info
         uses: jaywcjlove/github-action-package@main
         with:
-          path: './jellyfin-tizen/package.json'
+          path: 'jellyfin-tizen/package.json'
           data: |
             {
               "name": "@glenlowland/jellyfin-tizen",
@@ -93,7 +93,7 @@ jobs:
         uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          package: ./jellyfin-tizen
+          package: jellyfin-tizen
           access: public
 
       - name: Release Build Result
