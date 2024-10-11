@@ -50,16 +50,6 @@ jobs:
                 "MediaTrackPrevious", "MediaTrackNext", "MediaRewind", "MediaFastForward"
               ]
             }
-
-      - name: Set tize-adapter.js app version
-        uses: htsnvhoang/find-replace-multiple@master
-        with:
-          finds: |
-            version: 'DEVELOPMENT'
-          replaces: |
-            version: '${{ steps.info.outputs.version }}'
-          include: "tizen-adapter.js"
-          separator: "___"
             
       - name: Enable TrueHD Audio
         uses: htsnvhoang/find-replace-multiple@master
@@ -69,16 +59,6 @@ jobs:
           replaces: |
             return profileBuilder({ enableMkvProgressive: false, enableSsaRender: true, supportsTrueHd: true });
           include: "jellyfin-tizen/tizen.js"
-          separator: "___"
-
-      - name: Include tizen-adapter.js in the app
-        uses: htsnvhoang/find-replace-multiple@master
-        with:
-          finds: |
-            webapis.setAttribute('src', '$WEBAPIS/webapis/webapis.js');
-          replaces: |
-            webapis.setAttribute('src', '../tizen-adapter.js');
-          include: "jellyfin-tizen/gulpfile.babel.js"
           separator: "___"
 
       - name: Inject skip-intro-button.js in the app
@@ -99,7 +79,6 @@ jobs:
 
       - name: Build jellyfin-tizen
         run: |
-          cp tizen-adapter.js jellyfin-tizen/
           cd jellyfin-tizen
           rm .gitignore
           npm install @glenlowland/jellyfin-web
